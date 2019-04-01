@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessagePublisher.Models\MessagePublisher.Models.csproj" />
+    <ProjectReference Include="..\MessagesPublisher.Abstractions\MessagesPublisher.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
