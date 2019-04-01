@@ -67,13 +67,13 @@ namespace MessagePublisher.SignalR.Client.Modules
             }
             catch(HttpRequestException httpEx)
             {
-                //temp logging 
-                Console.WriteLine(httpEx.StackTrace.ToString());
                 this.IsConnected = false;
+                throw;
             } 
             catch(Exception ex)
             {
                 this.IsConnected = false;
+                throw;
             }
             return this;
         }

@@ -41,6 +41,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.simpleButtonSend = new DevExpress.XtraEditors.SimpleButton();
             this.xtraScrollableControl1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
@@ -65,6 +66,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.simpleButtonSend);
             this.groupBox2.Controls.Add(this.btnDeleteTempalte);
             this.groupBox2.Controls.Add(this.gridControl2);
             this.groupBox2.Controls.Add(this.btnAddTemplate);
@@ -163,6 +165,15 @@
             this.toolStripButton1.Text = "Connect/Reconnect";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // simpleButtonSend
+            // 
+            this.simpleButtonSend.Location = new System.Drawing.Point(169, 19);
+            this.simpleButtonSend.Name = "simpleButtonSend";
+            this.simpleButtonSend.Size = new System.Drawing.Size(75, 23);
+            this.simpleButtonSend.TabIndex = 7;
+            this.simpleButtonSend.Text = "Send";
+            this.simpleButtonSend.Click += new System.EventHandler(this.simpleButtonSend_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,6 +212,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.SimpleButton btnDeleteTempalte;
         private DevExpress.XtraEditors.SimpleButton btnAddTemplate;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonSend;
     }
 }
 

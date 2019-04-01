@@ -28,7 +28,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MessagePublisher.Client
 {
-    public partial class Form1 : BaseForm, IPopupService, IUpdatable<UpdateNotificationTemplatesPacket>
+    public partial class Form1 :  BaseForm, IPopupService, IUpdatable<UpdateNotificationTemplatesPacket>
     {
 
 
@@ -140,19 +140,22 @@ namespace MessagePublisher.Client
 
         private async void toolStripButton1_Click(object sender, EventArgs e)
         {
-            try
+            using (this.LoadingOn())
             {
-                await this.SignalRClient.Start();
-                this.RefreshData();
-                this.AttachImages();
-            }
-            catch(NullReferenceException nullRef)
-            {
-                this.logger.LogError(nullRef, nameof(Form1));
-            }
-            catch(Exception ex)
-            {
-                this.logger.LogError(ex, nameof(Form1));
+                try
+                {
+                    await this.SignalRClient.Start();
+                    this.RefreshData();
+                    this.AttachImages();
+                }
+                catch (NullReferenceException nullRef)
+                {
+                    MessageBox.Show(nullRef.StackTrace.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace.ToString());
+                }
             }
         }
 
@@ -186,8 +189,16 @@ namespace MessagePublisher.Client
         {
 
             var toDelte = this.NotificationTemplates.ElementAt(this.gridView2.GetSelectedRows().FirstOrDefault());
+            if(toDelte != null)
+                this.notificationTemplatesService.Remove(toDelte);
+        }
 
-            this.notificationTemplatesService.Remove(toDelte);
+        private void simpleButtonSend_Click(object sender, EventArgs e)
+        {
+            var selectedTempalte = this.NotificationTemplates.ElementAt(this.gridView2.GetSelectedRows().FirstOrDefault());
+            if(selectedTempalte != null)
+                this.notificationService.Send(new NotificationPacket() { Notification = selectedTempalte });
+
         }
     }
 }
